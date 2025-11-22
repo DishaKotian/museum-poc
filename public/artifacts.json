@@ -1,0 +1,54 @@
+{
+  "artifacts": [
+    {
+      "id": "ART001",
+      "title": "Ancient Greek Amphora",
+      "image": "https://images.unsplash.com/photo-1565008576549-57569a49371d?w=800&auto=format&fit=crop",
+      "date": "500 BCE",
+      "shortDescription": "A beautiful red-figure amphora from ancient Greece.",
+      "longDescription": "This stunning amphora showcases the mastery of ancient Greek pottery. The red-figure technique, developed around 530 BCE, allowed for more detailed and naturalistic depictions than the earlier black-figure style. The vase features scenes from daily life and mythology, offering invaluable insights into ancient Greek culture and artistry.",
+      "tags": ["Ancient Greece", "Pottery", "Classical Period"],
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    {
+      "id": "ART002",
+      "title": "Renaissance Portrait",
+      "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=800&auto=format&fit=crop",
+      "date": "1485 CE",
+      "shortDescription": "An exquisite Renaissance oil painting portrait.",
+      "longDescription": "This portrait exemplifies the Renaissance mastery of oil painting technique and realistic human representation. The subject's lifelike gaze and the subtle play of light and shadow demonstrate the artist's deep understanding of human anatomy and perspective. The rich colors and fine details were achieved through multiple layers of transparent glazes, a hallmark of Renaissance painting.",
+      "tags": ["Renaissance", "Portrait", "Oil Painting"],
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+    },
+    {
+      "id": "ART003",
+      "title": "Egyptian Sarcophagus",
+      "image": "https://images.unsplash.com/photo-1568454537842-d933259bb258?w=800&auto=format&fit=crop",
+      "date": "1250 BCE",
+      "shortDescription": "A decorated sarcophagus from ancient Egypt.",
+      "longDescription": "This ornate sarcophagus was crafted for a high-ranking official during Egypt's New Kingdom period. The intricate hieroglyphic inscriptions and colorful paintings depict the deceased's journey through the afterlife, guided by various deities. The preservation of these vibrant pigments after over 3,000 years is a testament to ancient Egyptian craftsmanship and their sophisticated understanding of materials.",
+      "tags": ["Ancient Egypt", "Burial", "New Kingdom"],
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "id": "ART004",
+      "title": "Medieval Illuminated Manuscript",
+      "image": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800&auto=format&fit=crop",
+      "date": "1200 CE",
+      "shortDescription": "A beautifully illuminated medieval manuscript page.",
+      "longDescription": "This exquisite manuscript page showcases the pinnacle of medieval book production. Painstakingly created by skilled scribes and illuminators over months or even years, such manuscripts were among the most valuable objects of their time. The gold leaf illuminations catch the light beautifully, while the intricate marginalia reveal the creativity and sometimes humor of medieval artists.",
+      "tags": ["Medieval", "Manuscript", "Religious Art"],
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+    },
+    {
+      "id": "ART005",
+      "title": "Chinese Ming Dynasty Vase",
+      "image": "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&auto=format&fit=crop",
+      "date": "1450 CE",
+      "shortDescription": "A blue and white porcelain vase from the Ming Dynasty.",
+      "longDescription": "This magnificent blue and white porcelain vase represents the height of Chinese ceramic artistry during the Ming Dynasty. The cobalt blue decorations, painted under the glaze, depict traditional motifs of dragons and phoenixes symbolizing imperial power and harmony. Ming porcelain was highly prized around the world and influenced ceramic production from Europe to the Middle East.",
+      "tags": ["Ming Dynasty", "Porcelain", "Chinese Art"],
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+    }
+  ]
+}
