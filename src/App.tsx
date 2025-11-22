@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import { QRScanner } from './components/QRScanner'
+import { ManualInput } from './components/ManualInput'
+import { ArtifactDetail } from './components/ArtifactDetail'
+import type { Artifact, ArtifactsData } from './types'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [artifacts, setArtifacts] = useState<Artifact[]>([]);
+  const [currentArtifact, setCurrentArtifact] = useState<Artifact | null>(null);
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    loadArtifacts();
+  }, []);
+
+  const loadArtifacts = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('/artifacts.json');
+      if (!response.ok) {
+        throw new Error('Failed to load artifacts');
+      }
+      const data: ArtifactsData = await response.json();
+      setArtifacts(data.artifacts);
+      setError('');
+    } catch (err) {
+      setError('Failed to load artifact data. Please try again later.');
+      console.error('Error loading artifacts:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleArtifactIdReceived = (artifactId: string) => {
+    const artifact = artifacts.find(a => a.id.toLowerCase() === artifactId.toLowerCase());
+    if (artifact) {
+      setCurrentArtifact(artifact);
+      setError('');
+    } else {
+      setError(`Artifact with ID "${artifactId}" not found.`);
+      setCurrentArtifact(null);
+    }
+  };
+
+  const handleBack = () => {
+    setCurrentArtifact(null);
+    setError('');
+  };
+
+  if (loading) {
+    return (
+      <div className="app">
+        <div className="loading">Loading artifacts...</div>
+      </div>
+    );
+  }
+
+  if (currentArtifact) {
+    return (
+      <div className="app">
+        <ArtifactDetail artifact={currentArtifact} onBack={handleBack} />
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <header className="app-header">
+        <h1>Museum Artifact Explorer</h1>
+        <p className="subtitle">Scan a QR code or enter an artifact ID to begin</p>
+      </header>
+
+      <main className="app-main">
+        <QRScanner 
+          onScan={handleArtifactIdReceived}
+          onError={(err) => setError(err.message)}
+        />
+        
+        <div className="divider">
+          <span>OR</span>
+        </div>
+
+        <ManualInput onSubmit={handleArtifactIdReceived} />
+
+        {error && (
+          <div className="error-message" role="alert">
+            {error}
+          </div>
+        )}
+      </main>
+    </div>
   )
 }
 
 export default App
+
