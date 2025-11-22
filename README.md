@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+# Museum POC - Vite + React + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A proof-of-concept museum artifact explorer application built with Vite, React, and TypeScript. This app allows users to scan QR codes or manually enter artifact IDs to view detailed information about museum artifacts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ **QR Code Scanning** - Camera activation only on user action for scanning QR codes  
+✅ **Manual Input Fallback** - Enter artifact IDs directly if QR scanning is unavailable  
+✅ **Rich Artifact Display** - Shows title, image, date, descriptions, tags, and audio guide  
+✅ **White-Label Theming** - Easy customization via CSS variables  
+✅ **Responsive Design** - Works seamlessly on desktop, tablet, and mobile devices  
+✅ **Accessibility** - WCAG compliant with proper ARIA labels and semantic HTML  
+✅ **Comprehensive Testing** - Jest + React Testing Library tests included  
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 18+ and npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Start development server
+npm run dev
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run tests
+npm test
+
+# Run linter
+npm run lint
 ```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── QRScanner.tsx          # QR code scanning component
+│   ├── ManualInput.tsx         # Manual artifact ID input
+│   ├── ArtifactDetail.tsx      # Artifact detail view
+│   └── *.test.tsx              # Component tests
+├── App.tsx                      # Main application component
+├── types.ts                     # TypeScript type definitions
+└── test/
+    └── setup.ts                 # Test configuration
+
+public/
+└── artifacts.json               # Artifact data file
+```
+
+## Customizing Themes
+
+The app uses CSS variables for easy white-labeling. Customize the theme by modifying the variables in `src/index.css`:
+
+```css
+:root {
+  --primary-color: #3b82f6;       /* Main brand color */
+  --primary-hover: #2563eb;       /* Hover state */
+  --background-color: #ffffff;    /* Background */
+  --text-primary: #0f172a;        /* Primary text */
+  --text-secondary: #475569;      /* Secondary text */
+  /* ... more variables */
+}
+```
+
+## Adding Artifacts
+
+Edit `public/artifacts.json` to add or modify artifacts:
+
+```json
+{
+  "artifacts": [
+    {
+      "id": "ART001",
+      "title": "Artifact Name",
+      "image": "https://example.com/image.jpg",
+      "date": "2000 BCE",
+      "shortDescription": "Brief description",
+      "longDescription": "Detailed description...",
+      "tags": ["Tag1", "Tag2"],
+      "audioUrl": "https://example.com/audio.mp3"
+    }
+  ]
+}
+```
+
+## Technology Stack
+
+- **Vite** - Fast build tool and dev server
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **@zxing/library** - QR code scanning
+- **Vitest** - Unit testing framework
+- **React Testing Library** - Component testing utilities
+
+## Browser Support
+
+- Modern browsers with ES2020+ support
+- Camera access required for QR scanning feature
+- Falls back to manual input if camera is unavailable
+
+## License
+
+MIT License - See LICENSE file for details
